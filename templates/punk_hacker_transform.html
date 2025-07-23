@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Punk Hacker Transformation</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Courier+Prime:wght@400;700&display=swap');
+        
+        body {
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            font-family: 'Orbitron', monospace;
+            color: #00ff41;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+        }
+
+        .title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            text-shadow: 0 0 20px #00ff41;
+            margin-bottom: 30px;
+            animation: glitch 2s infinite;
+        }
+
+        @keyframes glitch {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+        }
+
+        .image-container {
+            position: relative;
+            display: inline-block;
+            margin: 20px 0;
+        }
+
+        .profile-image {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            border: 4px solid #00ff41;
+            box-shadow: 
+                0 0 30px #00ff41,
+                inset 0 0 30px rgba(0, 255, 65, 0.2);
+            filter: 
+                contrast(1.3) 
+                brightness(1.1) 
+                saturate(0.8)
+                hue-rotate(120deg);
+            animation: pulse 2s infinite;
+            transition: all 0.3s ease;
+        }
+
+        .profile-image:hover {
+            filter: 
+                contrast(1.5) 
+                brightness(1.2) 
+                saturate(0.6)
+                hue-rotate(180deg)
+                sepia(0.3);
+            transform: scale(1.05);
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 30px #00ff41, inset 0 0 30px rgba(0, 255, 65, 0.2); }
+            50% { box-shadow: 0 0 50px #ff0080, inset 0 0 50px rgba(255, 0, 128, 0.3); }
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(45deg, transparent 40%, rgba(0, 255, 65, 0.1) 42%, rgba(0, 255, 65, 0.1) 44%, transparent 46%),
+                linear-gradient(-45deg, transparent 40%, rgba(255, 0, 128, 0.1) 42%, rgba(255, 0, 128, 0.1) 44%, transparent 46%);
+            border-radius: 50%;
+            animation: scan 3s infinite;
+        }
+
+        @keyframes scan {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-box {
+            background: rgba(0, 255, 65, 0.1);
+            border: 2px solid #00ff41;
+            padding: 15px 25px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .stat-box:hover {
+            background: rgba(255, 0, 128, 0.1);
+            border-color: #ff0080;
+            transform: translateY(-5px);
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 5px;
+        }
+
+        .joke-container {
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid #00ff41;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 30px 0;
+            font-family: 'Courier Prime', monospace;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .joke-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(0, 255, 65, 0.1), transparent);
+            animation: shine 4s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .joke-text {
+            position: relative;
+            z-index: 1;
+        }
+
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .skill-item {
+            background: linear-gradient(135deg, rgba(0, 255, 65, 0.1), rgba(255, 0, 128, 0.1));
+            border: 1px solid #00ff41;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: left;
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 255, 65, 0.3);
+        }
+
+        .skill-name {
+            font-weight: 700;
+            color: #ff0080;
+            margin-bottom: 5px;
+        }
+
+        .skill-level {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #00ff41, #ff0080);
+            border-radius: 4px;
+            animation: loadSkill 2s ease-out;
+        }
+
+        @keyframes loadSkill {
+            0% { width: 0%; }
+        }
+
+        .button-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        .download-btn {
+            background: linear-gradient(135deg, #ff0080, #8000ff);
+            border: none;
+            color: #fff;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Orbitron', monospace;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 0 20px rgba(255, 0, 128, 0.3);
+        }
+
+        .download-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(255, 0, 128, 0.6);
+            background: linear-gradient(135deg, #ff0080, #ff4081);
+        }
+
+        .download-btn:active {
+            transform: scale(0.98);
+        }
+            background: linear-gradient(135deg, #00ff41, #ff0080);
+            border: none;
+            color: #000;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Orbitron', monospace;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 20px 0;
+        }
+
+        .transform-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 255, 65, 0.5);
+        }
+
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            z-index: -1;
+            font-family: 'Courier Prime', monospace;
+            font-size: 14px;
+            color: #00ff41;
+            overflow: hidden;
+        }
+
+        .upload-zone {
+            width: 300px;
+            height: 300px;
+            border: 3px dashed #00ff41;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 255, 65, 0.05);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .upload-zone:hover {
+            background: rgba(0, 255, 65, 0.1);
+            border-color: #ff0080;
+            transform: scale(1.02);
+        }
+
+        .upload-zone.dragover {
+            background: rgba(255, 0, 128, 0.1);
+            border-color: #ff0080;
+        }
+
+        .upload-text {
+            color: #00ff41;
+            font-family: 'Orbitron', monospace;
+        }
+
+        .url-input-container {
+            margin: 20px 0;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .url-input {
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid #00ff41;
+            border-radius: 5px;
+            padding: 10px 15px;
+            color: #00ff41;
+            font-family: 'Courier Prime', monospace;
+            font-size: 14px;
+            width: 300px;
+            max-width: 100%;
+        }
+
+        .url-input:focus {
+            outline: none;
+            border-color: #ff0080;
+            box-shadow: 0 0 10px rgba(0, 255, 65, 0.3);
+        }
+
+        .load-btn {
+            background: linear-gradient(135deg, #00ff41, #ff0080);
+            border: none;
+            color: #000;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-weight: 700;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Orbitron', monospace;
+            transition: all 0.3s ease;
+        }
+
+        .load-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(0, 255, 65, 0.5);
+        }
+            .profile-image {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .title {
+                font-size: 2rem;
+            }
+            
+            .stats {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="matrix-bg" id="matrix"></div>
+    
+    <div class="container">
+        <h1 class="title">PUNK HACKER v2.0</h1>
+        
+        <div class="image-container">
+            <div class="upload-zone" id="uploadZone">
+                <div class="upload-text">
+                    <div style="font-size: 3rem; margin-bottom: 10px;">📁</div>
+                    <div style="font-size: 1.2rem; margin-bottom: 10px;">DRAG & DROP IMAGE</div>
+                    <div style="font-size: 0.9rem; opacity: 0.7;">или вставьте URL изображения ниже</div>
+                </div>
+            </div>
+            <img src="" 
+                 alt="Profile" 
+                 class="profile-image" 
+                 id="profileImg"
+                 style="display: none;">
+            <div class="overlay"></div>
+        </div>
+        
+        <div class="url-input-container">
+            <input type="url" 
+                   id="imageUrl" 
+                   placeholder="Вставьте URL изображения (например: https://example.com/photo.jpg)"
+                   class="url-input">
+            <button onclick="loadImageFromUrl()" class="load-btn">ЗАГРУЗИТЬ</button>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-box">
+                <div class="stat-label">HACK LEVEL</div>
+                <div class="stat-value">ELITE</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">PUNK FACTOR</div>
+                <div class="stat-value">MAX</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">HUMOR.EXE</div>
+                <div class="stat-value">LOADED</div>
+            </div>
+        </div>
+        
+        <div class="joke-container">
+            <div class="joke-text" id="jokeText">
+                > Why do hackers prefer dark mode?<br>
+                > Because light attracts bugs! 🐛<br><br>
+                > Status: Caffeine levels optimal, firewall jokes ready to deploy!
+            </div>
+        </div>
+        
+        <div class="skills">
+            <div class="skill-item">
+                <div class="skill-name">Social Engineering</div>
+                <div class="skill-level">
+                    <div class="skill-progress" style="width: 95%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-name">Penetration Testing</div>
+                <div class="skill-level">
+                    <div class="skill-progress" style="width: 88%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-name">Punk Attitude</div>
+                <div class="skill-level">
+                    <div class="skill-progress" style="width: 100%;"></div>
+                </div>
+            </div>
+            <div class="skill-item">
+                <div class="skill-name">Dad Jokes</div>
+                <div class="skill-level">
+                    <div class="skill-progress" style="width: 92%;"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="button-container">
+            <button class="transform-btn" onclick="transformImage()">
+                INITIATE TRANSFORMATION
+            </button>
+            <button class="download-btn" onclick="downloadImage()" id="downloadBtn" style="display: none;">
+                📥 DOWNLOAD PUNK VERSION
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Matrix background effect
+        function createMatrix() {
+            const matrix = document.getElementById('matrix');
+            const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+            let html = '';
+            
+            for (let i = 0; i < 100; i++) {
+                const char = chars[Math.floor(Math.random() * chars.length)];
+                const x = Math.random() * 100;
+                const y = Math.random() * 100;
+                const delay = Math.random() * 5;
+                
+                html += `<div style="position: absolute; left: ${x}%; top: ${y}%; animation: fall ${3 + Math.random() * 2}s infinite linear ${delay}s;">${char}</div>`;
+            }
+            
+            matrix.innerHTML = html;
+        }
+        
+        // Add falling animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fall {
+                0% { transform: translateY(-100vh); opacity: 1; }
+                100% { transform: translateY(100vh); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // Random jokes
+        const jokes = [
+            "> Why do hackers prefer dark mode?<br>> Because light attracts bugs! 🐛<br><br>> Status: Caffeine levels optimal, firewall jokes ready to deploy!",
+            "> What's a hacker's favorite type of music?<br>> Algo-rhythm! 🎵<br><br>> Status: Penetration testing in progress... and so are the puns!",
+            "> Why don't hackers ever get lost?<br>> Because they always know the root directory! 📁<br><br>> Status: Ethical hacking mode activated, dad jokes loaded!",
+            "> What do you call a hacker who's also a musician?<br>> A Bach-end developer! 🎹<br><br>> Status: Punk rock meets penetration testing!",
+            "> Why did the hacker break up with their router?<br>> It had too many trust issues! 💔<br><br>> Status: Relationship status: It's complicated (with technology)"
+        ];
+        
+        function transformImage() {
+            const img = document.getElementById('profileImg');
+            const jokeText = document.getElementById('jokeText');
+            
+            // Cycle through different filter effects
+            const filters = [
+                'contrast(1.8) brightness(1.3) saturate(0.5) hue-rotate(180deg) sepia(0.4)',
+                'contrast(2.0) brightness(1.1) saturate(0.3) hue-rotate(270deg) invert(0.1)',
+                'contrast(1.5) brightness(1.4) saturate(0.7) hue-rotate(90deg) sepia(0.6)',
+                'contrast(1.3) brightness(1.2) saturate(0.8) hue-rotate(240deg) sepia(0.2)'
+            ];
+            
+            const randomFilter = filters[Math.floor(Math.random() * filters.length)];
+            const randomJoke = jokes[Math.floor(Math.random() * jokes.length)];
+            
+            img.style.filter = randomFilter;
+            jokeText.innerHTML = randomJoke;
+            
+            // Add glitch effect
+            img.style.animation = 'glitch 0.5s ease-in-out';
+            setTimeout(() => {
+                img.style.animation = 'pulse 2s infinite';
+            }, 500);
+        }
+        
+        // Load image from URL
+        function loadImageFromUrl() {
+            const url = document.getElementById('imageUrl').value.trim();
+            const img = document.getElementById('profileImg');
+            const uploadZone = document.getElementById('uploadZone');
+            
+            if (url) {
+                img.src = url;
+                img.style.display = 'block';
+                uploadZone.style.display = 'none';
+                
+                img.onload = function() {
+                    console.log('Image loaded successfully');
+                    showDownloadButton();
+                };
+                
+                img.onerror = function() {
+                    alert('Не удалось загрузить изображение. Проверьте URL.');
+                    img.style.display = 'none';
+                    uploadZone.style.display = 'flex';
+                };
+            }
+        }
+
+        // Drag and drop functionality
+        const uploadZone = document.getElementById('uploadZone');
+        
+        uploadZone.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            uploadZone.classList.add('dragover');
+        });
+        
+        uploadZone.addEventListener('dragleave', function(e) {
+            e.preventDefault();
+            uploadZone.classList.remove('dragover');
+        });
+        
+        uploadZone.addEventListener('drop', function(e) {
+            e.preventDefault();
+            uploadZone.classList.remove('dragover');
+            
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                const file = files[0];
+                if (file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        const img = document.getElementById('profileImg');
+                        img.src = event.target.result;
+                        img.style.display = 'block';
+                        uploadZone.style.display = 'none';
+                        showDownloadButton();
+                    };
+                    reader.readAsDataURL(file);
+                }
+            }
+        });
+        
+        // Download transformed image
+        function downloadImage() {
+            const img = document.getElementById('profileImg');
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Set canvas size
+            canvas.width = 300;
+            canvas.height = 300;
+            
+            // Create a new image element for processing
+            const tempImg = new Image();
+            tempImg.crossOrigin = 'anonymous';
+            
+            tempImg.onload = function() {
+                // Draw the image on canvas
+                ctx.save();
+                
+                // Create circular clip
+                ctx.beginPath();
+                ctx.arc(150, 150, 150, 0, Math.PI * 2);
+                ctx.clip();
+                
+                // Apply current filter effects
+                const computedStyle = window.getComputedStyle(img);
+                ctx.filter = computedStyle.filter;
+                
+                // Draw image
+                ctx.drawImage(tempImg, 0, 0, 300, 300);
+                ctx.restore();
+                
+                // Add neon border effect
+                ctx.strokeStyle = '#00ff41';
+                ctx.lineWidth = 4;
+                ctx.shadowColor = '#00ff41';
+                ctx.shadowBlur = 20;
+                ctx.beginPath();
+                ctx.arc(150, 150, 148, 0, Math.PI * 2);
+                ctx.stroke();
+                
+                // Add punk text overlay
+                ctx.font = 'bold 16px Orbitron';
+                ctx.fillStyle = '#00ff41';
+                ctx.shadowColor = '#00ff41';
+                ctx.shadowBlur = 10;
+                ctx.textAlign = 'center';
+                ctx.fillText('PUNK HACKER', 150, 280);
+                
+                // Download the result
+                canvas.toBlob(function(blob) {
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'punk-hacker-avatar.png';
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+                }, 'image/png');
+            };
+            
+            tempImg.onerror = function() {
+                // Fallback: try to download without canvas processing
+                const a = document.createElement('a');
+                a.href = img.src;
+                a.download = 'punk-hacker-avatar.jpg';
+                a.click();
+            };
+            
+            tempImg.src = img.src;
+        }
+
+        // Show download button when image is loaded
+        function showDownloadButton() {
+            const downloadBtn = document.getElementById('downloadBtn');
+            downloadBtn.style.display = 'inline-block';
+            
+            // Add glowing animation
+            setTimeout(() => {
+                downloadBtn.style.animation = 'pulse 2s infinite';
+            }, 500);
+        }
+        document.getElementById('imageUrl').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                loadImageFromUrl();
+            }
+        });
+        
+        // Initialize matrix background
+        createMatrix();
+        
+        // Auto-rotate jokes every 10 seconds
+        setInterval(() => {
+            const jokeText = document.getElementById('jokeText');
+            const randomJoke = jokes[Math.floor(Math.random() * jokes.length)];
+            jokeText.innerHTML = randomJoke;
+        }, 10000);
+    </script>
+</body>
+</html>
