@@ -243,6 +243,8 @@
         .download-btn:active {
             transform: scale(0.98);
         }
+
+        .transform-btn {
             background: linear-gradient(135deg, #00ff41, #ff0080);
             border: none;
             color: #000;
@@ -261,6 +263,251 @@
         .transform-btn:hover {
             transform: scale(1.05);
             box-shadow: 0 0 30px rgba(0, 255, 65, 0.5);
+        }
+
+        .transform-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Fogg Behavior Model Enhancements */
+        
+        /* Motivation: Value Proposition */
+        .value-proposition {
+            background: rgba(0, 255, 65, 0.1);
+            border: 2px solid #00ff41;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .value-proposition h2 {
+            font-size: 1.3rem;
+            margin: 0 0 10px 0;
+            color: #ff0080;
+        }
+
+        .value-proposition p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* Ability: File Picker Button */
+        .file-picker-btn {
+            background: linear-gradient(135deg, #00ff41, #00cc33);
+            border: 2px solid #00ff41;
+            color: #000;
+            padding: 12px 25px;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Orbitron', monospace;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 15px;
+            display: inline-block;
+        }
+
+        .file-picker-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
+            background: linear-gradient(135deg, #00ff41, #00ff80);
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        /* Prompts: Step Indicators */
+        .step-indicator {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 15px;
+            background: rgba(0, 255, 65, 0.05);
+            border: 2px solid rgba(0, 255, 65, 0.3);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .step.active {
+            background: rgba(0, 255, 65, 0.2);
+            border-color: #00ff41;
+            box-shadow: 0 0 15px rgba(0, 255, 65, 0.3);
+        }
+
+        .step.completed {
+            background: rgba(0, 255, 65, 0.15);
+            border-color: #00ff41;
+        }
+
+        .step-number {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: rgba(0, 255, 65, 0.2);
+            border: 2px solid #00ff41;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        .step.active .step-number {
+            background: #00ff41;
+            color: #000;
+        }
+
+        .step.completed .step-number {
+            background: #00ff41;
+            color: #000;
+        }
+
+        .step.completed .step-number::after {
+            content: '✓';
+        }
+
+        /* Prompts: Contextual Instructions */
+        .instruction-text {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin: 15px 0;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.3);
+            border-left: 3px solid #00ff41;
+            border-radius: 5px;
+            text-align: left;
+            font-family: 'Courier Prime', monospace;
+        }
+
+        .instruction-text.highlight {
+            opacity: 1;
+            background: rgba(0, 255, 65, 0.1);
+            border-left-color: #ff0080;
+            animation: pulse-border 2s infinite;
+        }
+
+        @keyframes pulse-border {
+            0%, 100% { border-left-color: #ff0080; }
+            50% { border-left-color: #00ff41; }
+        }
+
+        /* Ability: Loading States */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(0, 255, 65, 0.3);
+            border-radius: 50%;
+            border-top-color: #00ff41;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Motivation: Success Messages */
+        .success-message {
+            background: rgba(0, 255, 65, 0.2);
+            border: 2px solid #00ff41;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+            animation: slideIn 0.5s ease-out;
+            display: none;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Ability: Better Error Messages */
+        .error-message {
+            background: rgba(255, 0, 0, 0.2);
+            border: 2px solid #ff0080;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+            color: #ff0080;
+            animation: slideIn 0.5s ease-out;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        /* Prompts: Visual Cues */
+        .pulse-cue {
+            animation: pulse-cue 2s infinite;
+        }
+
+        @keyframes pulse-cue {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Motivation: Preview Section */
+        .preview-section {
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid #00ff41;
+            border-radius: 15px;
+        }
+
+        .preview-section h3 {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: #ff0080;
+        }
+
+        .preview-examples {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .preview-item {
+            text-align: center;
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        .preview-item::before {
+            content: '→';
+            display: block;
+            font-size: 2rem;
+            color: #00ff41;
+            margin-bottom: 5px;
         }
 
         .matrix-bg {
@@ -372,12 +619,43 @@
     <div class="container">
         <h1 class="title">PUNK HACKER v2.0</h1>
         
+        <!-- Motivation: Value Proposition -->
+        <div class="value-proposition">
+            <h2>⚡ Transform Your Photo Into a Cyberpunk Masterpiece</h2>
+            <p>Upload any image and watch it transform into a neon-infused, glitchy punk hacker avatar. Perfect for profile pictures, avatars, or just showing off your cyberpunk style!</p>
+        </div>
+
+        <!-- Prompts: Step Indicators -->
+        <div class="step-indicator">
+            <div class="step active" id="step1">
+                <div class="step-number">1</div>
+                <span>Upload Image</span>
+            </div>
+            <div class="step" id="step2">
+                <div class="step-number">2</div>
+                <span>Transform</span>
+            </div>
+            <div class="step" id="step3">
+                <div class="step-number">3</div>
+                <span>Download</span>
+            </div>
+        </div>
+
+        <!-- Ability: Success/Error Messages -->
+        <div class="success-message" id="successMessage"></div>
+        <div class="error-message" id="errorMessage"></div>
+        
         <div class="image-container">
             <div class="upload-zone" id="uploadZone">
                 <div class="upload-text">
                     <div style="font-size: 3rem; margin-bottom: 10px;">📁</div>
                     <div style="font-size: 1.2rem; margin-bottom: 10px;">DRAG & DROP IMAGE</div>
                     <div style="font-size: 0.9rem; opacity: 0.7;">или вставьте URL изображения ниже</div>
+                    <!-- Ability: File Picker Button -->
+                    <button class="file-picker-btn" onclick="document.getElementById('fileInput').click()">
+                        📂 BROWSE FILES
+                    </button>
+                    <input type="file" id="fileInput" accept="image/*">
                 </div>
             </div>
             <img src="" 
@@ -388,12 +666,20 @@
             <div class="overlay"></div>
         </div>
         
+        <!-- Prompts: Contextual Instructions -->
+        <div class="instruction-text highlight" id="uploadInstruction">
+            💡 <strong>Tip:</strong> Drag & drop an image above, click "BROWSE FILES", or paste an image URL below
+        </div>
+
         <div class="url-input-container">
             <input type="url" 
                    id="imageUrl" 
                    placeholder="Вставьте URL изображения (например: https://example.com/photo.jpg)"
                    class="url-input">
-            <button onclick="loadImageFromUrl()" class="load-btn">ЗАГРУЗИТЬ</button>
+            <button onclick="loadImageFromUrl()" class="load-btn" id="loadBtn">
+                <span id="loadBtnText">ЗАГРУЗИТЬ</span>
+                <span class="loading" id="loadSpinner" style="display: none;"></span>
+            </button>
         </div>
         
         <div class="stats">
@@ -446,17 +732,78 @@
             </div>
         </div>
         
+        <!-- Prompts: Contextual Instructions for Transformation -->
+        <div class="instruction-text" id="transformInstruction" style="display: none;">
+            ✨ Image loaded! Click below to apply punk hacker transformation effects
+        </div>
+
         <div class="button-container">
-            <button class="transform-btn" onclick="transformImage()">
-                INITIATE TRANSFORMATION
+            <button class="transform-btn" onclick="transformImage()" id="transformBtn" disabled>
+                <span id="transformBtnText">INITIATE TRANSFORMATION</span>
+                <span class="loading" id="transformSpinner" style="display: none;"></span>
             </button>
-            <button class="download-btn" onclick="downloadImage()" id="downloadBtn" style="display: none;">
+            <button class="download-btn pulse-cue" onclick="downloadImage()" id="downloadBtn" style="display: none;">
                 📥 DOWNLOAD PUNK VERSION
             </button>
         </div>
     </div>
 
     <script>
+        // Fogg Behavior Model: Step Management
+        function updateSteps(currentStep) {
+            const steps = ['step1', 'step2', 'step3'];
+            steps.forEach((stepId, index) => {
+                const step = document.getElementById(stepId);
+                const stepNum = index + 1;
+                if (stepNum < currentStep) {
+                    step.classList.remove('active');
+                    step.classList.add('completed');
+                } else if (stepNum === currentStep) {
+                    step.classList.add('active');
+                    step.classList.remove('completed');
+                } else {
+                    step.classList.remove('active', 'completed');
+                }
+            });
+        }
+
+        // Fogg Behavior Model: Show Success Message
+        function showSuccess(message) {
+            const successMsg = document.getElementById('successMessage');
+            successMsg.textContent = '✓ ' + message;
+            successMsg.classList.add('show');
+            setTimeout(() => {
+                successMsg.classList.remove('show');
+            }, 3000);
+        }
+
+        // Fogg Behavior Model: Show Error Message
+        function showError(message) {
+            const errorMsg = document.getElementById('errorMessage');
+            errorMsg.textContent = '✗ ' + message;
+            errorMsg.classList.add('show');
+            setTimeout(() => {
+                errorMsg.classList.remove('show');
+            }, 5000);
+        }
+
+        // Fogg Behavior Model: Update Instructions
+        function updateInstructions(step) {
+            const uploadInstruction = document.getElementById('uploadInstruction');
+            const transformInstruction = document.getElementById('transformInstruction');
+            
+            if (step === 'upload') {
+                uploadInstruction.classList.add('highlight');
+                transformInstruction.style.display = 'none';
+            } else if (step === 'transform') {
+                uploadInstruction.classList.remove('highlight');
+                transformInstruction.style.display = 'block';
+            } else if (step === 'download') {
+                uploadInstruction.style.display = 'none';
+                transformInstruction.style.display = 'none';
+            }
+        }
+
         // Matrix background effect
         function createMatrix() {
             const matrix = document.getElementById('matrix');
@@ -497,6 +844,14 @@
         function transformImage() {
             const img = document.getElementById('profileImg');
             const jokeText = document.getElementById('jokeText');
+            const transformBtn = document.getElementById('transformBtn');
+            const transformBtnText = document.getElementById('transformBtnText');
+            const transformSpinner = document.getElementById('transformSpinner');
+            
+            // Fogg Behavior Model: Show loading state
+            transformBtn.disabled = true;
+            transformBtnText.style.display = 'none';
+            transformSpinner.style.display = 'inline-block';
             
             // Cycle through different filter effects
             const filters = [
@@ -509,14 +864,27 @@
             const randomFilter = filters[Math.floor(Math.random() * filters.length)];
             const randomJoke = jokes[Math.floor(Math.random() * jokes.length)];
             
-            img.style.filter = randomFilter;
-            jokeText.innerHTML = randomJoke;
-            
-            // Add glitch effect
-            img.style.animation = 'glitch 0.5s ease-in-out';
+            // Simulate processing time for better UX
             setTimeout(() => {
-                img.style.animation = 'pulse 2s infinite';
-            }, 500);
+                img.style.filter = randomFilter;
+                jokeText.innerHTML = randomJoke;
+                
+                // Add glitch effect
+                img.style.animation = 'glitch 0.5s ease-in-out';
+                setTimeout(() => {
+                    img.style.animation = 'pulse 2s infinite';
+                }, 500);
+                
+                // Fogg Behavior Model: Update steps and show success
+                updateSteps(3);
+                updateInstructions('download');
+                showSuccess('Transformation complete! Ready to download.');
+                
+                // Re-enable button
+                transformBtn.disabled = false;
+                transformBtnText.style.display = 'inline';
+                transformSpinner.style.display = 'none';
+            }, 800);
         }
         
         // Load image from URL
@@ -524,23 +892,51 @@
             const url = document.getElementById('imageUrl').value.trim();
             const img = document.getElementById('profileImg');
             const uploadZone = document.getElementById('uploadZone');
+            const loadBtn = document.getElementById('loadBtn');
+            const loadBtnText = document.getElementById('loadBtnText');
+            const loadSpinner = document.getElementById('loadSpinner');
             
-            if (url) {
-                img.src = url;
-                img.style.display = 'block';
-                uploadZone.style.display = 'none';
-                
-                img.onload = function() {
-                    console.log('Image loaded successfully');
-                    showDownloadButton();
-                };
-                
-                img.onerror = function() {
-                    alert('Не удалось загрузить изображение. Проверьте URL.');
-                    img.style.display = 'none';
-                    uploadZone.style.display = 'flex';
-                };
+            if (!url) {
+                showError('Please enter an image URL');
+                return;
             }
+            
+            // Fogg Behavior Model: Show loading state
+            loadBtn.disabled = true;
+            loadBtnText.style.display = 'none';
+            loadSpinner.style.display = 'inline-block';
+            
+            img.src = url;
+            img.style.display = 'block';
+            uploadZone.style.display = 'none';
+            
+            img.onload = function() {
+                console.log('Image loaded successfully');
+                // Fogg Behavior Model: Update steps and show success
+                updateSteps(2);
+                updateInstructions('transform');
+                showSuccess('Image loaded successfully!');
+                showDownloadButton();
+                
+                // Re-enable button
+                loadBtn.disabled = false;
+                loadBtnText.style.display = 'inline';
+                loadSpinner.style.display = 'none';
+                
+                // Enable transform button
+                document.getElementById('transformBtn').disabled = false;
+            };
+            
+            img.onerror = function() {
+                showError('Failed to load image. Please check the URL and try again.');
+                img.style.display = 'none';
+                uploadZone.style.display = 'flex';
+                
+                // Re-enable button
+                loadBtn.disabled = false;
+                loadBtnText.style.display = 'inline';
+                loadSpinner.style.display = 'none';
+            };
         }
 
         // Drag and drop functionality
@@ -570,9 +966,48 @@
                         img.src = event.target.result;
                         img.style.display = 'block';
                         uploadZone.style.display = 'none';
+                        
+                        // Fogg Behavior Model: Update steps and show success
+                        updateSteps(2);
+                        updateInstructions('transform');
+                        showSuccess('Image uploaded successfully!');
                         showDownloadButton();
+                        
+                        // Enable transform button
+                        document.getElementById('transformBtn').disabled = false;
                     };
                     reader.readAsDataURL(file);
+                } else {
+                    showError('Please upload an image file (JPG, PNG, GIF, etc.)');
+                }
+            }
+        });
+
+        // Fogg Behavior Model: File picker handler
+        document.getElementById('fileInput').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                if (file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        const img = document.getElementById('profileImg');
+                        const uploadZone = document.getElementById('uploadZone');
+                        img.src = event.target.result;
+                        img.style.display = 'block';
+                        uploadZone.style.display = 'none';
+                        
+                        // Fogg Behavior Model: Update steps and show success
+                        updateSteps(2);
+                        updateInstructions('transform');
+                        showSuccess('Image uploaded successfully!');
+                        showDownloadButton();
+                        
+                        // Enable transform button
+                        document.getElementById('transformBtn').disabled = false;
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    showError('Please select an image file (JPG, PNG, GIF, etc.)');
                 }
             }
         });
@@ -635,6 +1070,10 @@
                     a.click();
                     document.body.removeChild(a);
                     URL.revokeObjectURL(url);
+                    
+                    // Fogg Behavior Model: Show success feedback
+                    showSuccess('Download started! Check your downloads folder.');
+                    updateSteps(3);
                 }, 'image/png');
             };
             
@@ -644,6 +1083,10 @@
                 a.href = img.src;
                 a.download = 'punk-hacker-avatar.jpg';
                 a.click();
+                
+                // Fogg Behavior Model: Show success feedback
+                showSuccess('Download started! Check your downloads folder.');
+                updateSteps(3);
             };
             
             tempImg.src = img.src;
@@ -667,6 +1110,10 @@
         
         // Initialize matrix background
         createMatrix();
+        
+        // Fogg Behavior Model: Initialize UI state
+        updateSteps(1);
+        updateInstructions('upload');
         
         // Auto-rotate jokes every 10 seconds
         setInterval(() => {
