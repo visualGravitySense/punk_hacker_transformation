@@ -597,6 +597,150 @@
             transform: scale(1.05);
             box-shadow: 0 0 15px rgba(0, 255, 65, 0.5);
         }
+
+        /* Filter Settings Panel */
+        .filter-settings {
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid #00ff41;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 30px 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .filter-settings h3 {
+            font-size: 1.3rem;
+            margin: 0 0 20px 0;
+            color: #ff0080;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .filter-controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .filter-control {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .filter-control label {
+            font-size: 0.9rem;
+            color: #00ff41;
+            font-family: 'Courier Prime', monospace;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .filter-control input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 6px;
+            background: rgba(0, 255, 65, 0.2);
+            border-radius: 3px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .filter-control input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            background: #00ff41;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .filter-control input[type="range"]::-webkit-slider-thumb:hover {
+            background: #ff0080;
+            box-shadow: 0 0 15px rgba(255, 0, 128, 0.7);
+            transform: scale(1.2);
+        }
+
+        .filter-control input[type="range"]::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            background: #00ff41;
+            border-radius: 50%;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .filter-control input[type="range"]::-moz-range-thumb:hover {
+            background: #ff0080;
+            box-shadow: 0 0 15px rgba(255, 0, 128, 0.7);
+            transform: scale(1.2);
+        }
+
+        .filter-control input[type="color"] {
+            width: 100%;
+            height: 40px;
+            border: 2px solid #00ff41;
+            border-radius: 5px;
+            background: transparent;
+            cursor: pointer;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+
+        .filter-control input[type="color"]::-webkit-color-swatch-wrapper {
+            padding: 0;
+        }
+
+        .filter-control input[type="color"]::-webkit-color-swatch {
+            border: none;
+            border-radius: 3px;
+        }
+
+        .filter-value {
+            font-weight: 700;
+            color: #ff0080;
+            font-family: 'Orbitron', monospace;
+            min-width: 50px;
+            text-align: right;
+        }
+
+        .settings-toggle {
+            background: linear-gradient(135deg, #00ff41, #ff0080);
+            border: none;
+            color: #000;
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Orbitron', monospace;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 20px auto;
+            display: block;
+        }
+
+        .settings-toggle:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
+        }
+
+        .filter-settings.hidden {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
             .profile-image {
                 width: 250px;
                 height: 250px;
@@ -610,19 +754,367 @@
                 flex-direction: column;
                 align-items: center;
             }
+
+            .filter-controls {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* CREATE Action Funnel Enhancements */
+        
+        /* CUE: Attention-grabbing visual prompts */
+        .action-cue {
+            position: relative;
+            animation: cue-pulse 2s infinite;
+        }
+
+        @keyframes cue-pulse {
+            0%, 100% { 
+                transform: scale(1);
+                box-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
+            }
+            50% { 
+                transform: scale(1.02);
+                box-shadow: 0 0 30px rgba(0, 255, 65, 0.8);
+            }
+        }
+
+        .cue-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #00ff41, #ff0080);
+            color: #000;
+            padding: 15px 20px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-family: 'Orbitron', monospace;
+            z-index: 1000;
+            animation: slideInRight 0.5s ease-out, fadeOut 0.5s ease-out 2.5s;
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
+            display: none;
+        }
+
+        .cue-notification.show {
+            display: block;
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+
+        /* REACTION: Emotionally appealing elements */
+        .preview-badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: linear-gradient(135deg, #ff0080, #8000ff);
+            color: #fff;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            font-family: 'Orbitron', monospace;
+            box-shadow: 0 0 15px rgba(255, 0, 128, 0.6);
+            animation: badge-bounce 2s infinite;
+        }
+
+        @keyframes badge-bounce {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-5px) rotate(-5deg); }
+            75% { transform: translateY(-5px) rotate(5deg); }
+        }
+
+        .value-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 5px 10px;
+            background: rgba(0, 255, 65, 0.1);
+            border: 1px solid #00ff41;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            margin-left: 10px;
+        }
+
+        /* EVALUATION: Benefit indicators */
+        .benefit-preview {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            background: rgba(0, 255, 65, 0.05);
+            border-left: 3px solid #00ff41;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-size: 0.9rem;
+        }
+
+        .benefit-preview::before {
+            content: '✓';
+            color: #00ff41;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .effort-indicator {
+            font-size: 0.85rem;
+            opacity: 0.7;
+            font-style: italic;
+            margin-top: 5px;
+        }
+
+        /* ABILITY: Tooltips and guidance */
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 200px;
+            background-color: rgba(0, 0, 0, 0.9);
+            color: #00ff41;
+            text-align: center;
+            border: 2px solid #00ff41;
+            border-radius: 6px;
+            padding: 8px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -100px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 0.85rem;
+            font-family: 'Courier Prime', monospace;
+        }
+
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .tooltip .tooltiptext::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #00ff41 transparent transparent transparent;
+        }
+
+        .micro-interaction {
+            transition: all 0.2s ease;
+        }
+
+        .micro-interaction:hover {
+            transform: translateY(-2px);
+        }
+
+        .micro-interaction:active {
+            transform: translateY(0);
+        }
+
+        /* TIMING: Contextual prompts */
+        .contextual-prompt {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.9);
+            border: 2px solid #00ff41;
+            border-radius: 15px;
+            padding: 15px 25px;
+            font-family: 'Orbitron', monospace;
+            font-size: 0.9rem;
+            z-index: 999;
+            display: none;
+            animation: promptSlideUp 0.5s ease-out;
+            box-shadow: 0 0 30px rgba(0, 255, 65, 0.5);
+            max-width: 90%;
+            text-align: center;
+        }
+
+        .contextual-prompt.show {
+            display: block;
+        }
+
+        @keyframes promptSlideUp {
+            from {
+                transform: translateX(-50%) translateY(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(-50%) translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .contextual-prompt .prompt-action {
+            display: inline-block;
+            margin-left: 10px;
+            color: #ff0080;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        /* EXECUTION: Enhanced feedback */
+        .execution-feedback {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 0, 0, 0.95);
+            border: 3px solid #00ff41;
+            border-radius: 20px;
+            padding: 30px 40px;
+            z-index: 2000;
+            text-align: center;
+            display: none;
+            animation: executionPulse 0.5s ease-out;
+            box-shadow: 0 0 50px rgba(0, 255, 65, 0.8);
+        }
+
+        .execution-feedback.show {
+            display: block;
+        }
+
+        @keyframes executionPulse {
+            0% {
+                transform: translate(-50%, -50%) scale(0.8);
+                opacity: 0;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.05);
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+            }
+        }
+
+        .execution-feedback-icon {
+            font-size: 4rem;
+            margin-bottom: 15px;
+            animation: iconSpin 0.5s ease-out;
+        }
+
+        @keyframes iconSpin {
+            from { transform: rotate(-180deg) scale(0); }
+            to { transform: rotate(0deg) scale(1); }
+        }
+
+        .execution-feedback h3 {
+            font-size: 1.5rem;
+            margin: 0 0 10px 0;
+            color: #00ff41;
+        }
+
+        .execution-feedback p {
+            font-size: 1rem;
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        .next-step-hint {
+            margin-top: 20px;
+            padding: 10px;
+            background: rgba(0, 255, 65, 0.1);
+            border: 1px solid #00ff41;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .next-step-hint.show {
+            display: block;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        .progress-ring {
+            position: relative;
+            width: 60px;
+            height: 60px;
+            margin: 0 auto;
+        }
+
+        .progress-ring circle {
+            fill: none;
+            stroke: #00ff41;
+            stroke-width: 4;
+            stroke-linecap: round;
+            transition: stroke-dashoffset 0.3s;
+        }
+
+        .progress-ring .progress-bg {
+            stroke: rgba(0, 255, 65, 0.2);
+        }
+
+        .progress-ring .progress-fill {
+            stroke: #00ff41;
+            stroke-dasharray: 188.4;
+            stroke-dashoffset: 188.4;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
         }
     </style>
 </head>
 <body>
     <div class="matrix-bg" id="matrix"></div>
     
+    <!-- CUE: Notification -->
+    <div class="cue-notification" id="cueNotification"></div>
+    
+    <!-- TIMING: Contextual Prompt -->
+    <div class="contextual-prompt" id="contextualPrompt">
+        <span id="promptText"></span>
+        <span class="prompt-action" id="promptAction" onclick="handlePromptAction()"></span>
+    </div>
+    
+    <!-- EXECUTION: Enhanced Feedback -->
+    <div class="execution-feedback" id="executionFeedback">
+        <div class="execution-feedback-icon" id="feedbackIcon">✓</div>
+        <h3 id="feedbackTitle">Success!</h3>
+        <p id="feedbackMessage"></p>
+    </div>
+    
     <div class="container">
         <h1 class="title">PUNK HACKER v2.0</h1>
         
         <!-- Motivation: Value Proposition -->
         <div class="value-proposition">
-            <h2>⚡ Transform Your Photo Into a Cyberpunk Masterpiece</h2>
+            <h2>⚡ Transform Your Photo Into a Cyberpunk Masterpiece
+                <span class="value-indicator">✨ FREE</span>
+            </h2>
             <p>Upload any image and watch it transform into a neon-infused, glitchy punk hacker avatar. Perfect for profile pictures, avatars, or just showing off your cyberpunk style!</p>
+            
+            <!-- EVALUATION: Benefit Preview -->
+            <div class="benefit-preview">
+                <span>Instant transformation in seconds</span>
+            </div>
+            <div class="benefit-preview">
+                <span>No registration or account needed</span>
+            </div>
+            <div class="benefit-preview">
+                <span>Download high-quality PNG instantly</span>
+            </div>
+            <div class="effort-indicator">⏱️ Takes less than 30 seconds</div>
         </div>
 
         <!-- Prompts: Step Indicators -->
@@ -646,15 +1138,23 @@
         <div class="error-message" id="errorMessage"></div>
         
         <div class="image-container">
-            <div class="upload-zone" id="uploadZone">
+            <!-- REACTION: Preview Badge -->
+            <div class="preview-badge" id="previewBadge" style="display: none;">
+                LIVE PREVIEW
+            </div>
+            
+            <div class="upload-zone action-cue" id="uploadZone">
                 <div class="upload-text">
                     <div style="font-size: 3rem; margin-bottom: 10px;">📁</div>
                     <div style="font-size: 1.2rem; margin-bottom: 10px;">DRAG & DROP IMAGE</div>
-                    <div style="font-size: 0.9rem; opacity: 0.7;">или вставьте URL изображения ниже</div>
+                    <div style="font-size: 0.9rem; opacity: 0.7;">or paste image URL below</div>
                     <!-- Ability: File Picker Button -->
-                    <button class="file-picker-btn" onclick="document.getElementById('fileInput').click()">
-                        📂 BROWSE FILES
-                    </button>
+                    <div class="tooltip">
+                        <button class="file-picker-btn micro-interaction" onclick="document.getElementById('fileInput').click()">
+                            📂 BROWSE FILES
+                        </button>
+                        <span class="tooltiptext">Click to select an image from your device</span>
+                    </div>
                     <input type="file" id="fileInput" accept="image/*">
                 </div>
             </div>
@@ -674,10 +1174,10 @@
         <div class="url-input-container">
             <input type="url" 
                    id="imageUrl" 
-                   placeholder="Вставьте URL изображения (например: https://example.com/photo.jpg)"
+                   placeholder="Paste image URL (e.g.: https://example.com/photo.jpg)"
                    class="url-input">
             <button onclick="loadImageFromUrl()" class="load-btn" id="loadBtn">
-                <span id="loadBtnText">ЗАГРУЗИТЬ</span>
+                <span id="loadBtnText">LOAD</span>
                 <span class="loading" id="loadSpinner" style="display: none;"></span>
             </button>
         </div>
@@ -737,18 +1237,383 @@
             ✨ Image loaded! Click below to apply punk hacker transformation effects
         </div>
 
-        <div class="button-container">
-            <button class="transform-btn" onclick="transformImage()" id="transformBtn" disabled>
-                <span id="transformBtnText">INITIATE TRANSFORMATION</span>
-                <span class="loading" id="transformSpinner" style="display: none;"></span>
-            </button>
-            <button class="download-btn pulse-cue" onclick="downloadImage()" id="downloadBtn" style="display: none;">
-                📥 DOWNLOAD PUNK VERSION
-            </button>
+        <!-- Filter Settings Panel -->
+        <button class="settings-toggle" onclick="toggleFilterSettings()" id="settingsToggle">
+            ⚙️ FILTER SETTINGS
+        </button>
+        
+        <div class="filter-settings hidden" id="filterSettings">
+            <h3>🎨 Filter Parameters</h3>
+            <div class="filter-controls">
+                <div class="filter-control">
+                    <label>
+                        Primary Color
+                        <input type="color" id="primaryColor" value="#00ff41" onchange="updateFilter()">
+                    </label>
+                </div>
+                
+                <div class="filter-control">
+                    <label>
+                        Secondary Color
+                        <input type="color" id="secondaryColor" value="#ff0080" onchange="updateFilter()">
+                    </label>
+                </div>
+                
+                <div class="filter-control">
+                    <label>
+                        Contrast
+                        <span class="filter-value" id="contrastValue">130%</span>
+                    </label>
+                    <input type="range" id="contrastSlider" min="50" max="200" value="130" oninput="updateFilter()">
+                </div>
+                
+                <div class="filter-control">
+                    <label>
+                        Brightness
+                        <span class="filter-value" id="brightnessValue">110%</span>
+                    </label>
+                    <input type="range" id="brightnessSlider" min="50" max="200" value="110" oninput="updateFilter()">
+                </div>
+                
+                <div class="filter-control">
+                    <label>
+                        Saturation
+                        <span class="filter-value" id="saturationValue">80%</span>
+                    </label>
+                    <input type="range" id="saturationSlider" min="0" max="200" value="80" oninput="updateFilter()">
+                </div>
+                
+                <div class="filter-control">
+                    <label>
+                        Hue Rotation
+                        <span class="filter-value" id="hueValue">120°</span>
+                    </label>
+                    <input type="range" id="hueSlider" min="0" max="360" value="120" oninput="updateFilter()">
+                </div>
+                
+                <div class="filter-control">
+                    <label>
+                        Sepia
+                        <span class="filter-value" id="sepiaValue">0%</span>
+                    </label>
+                    <input type="range" id="sepiaSlider" min="0" max="100" value="0" oninput="updateFilter()">
+                </div>
+                
+                <div class="filter-control">
+                    <label>
+                        Invert
+                        <span class="filter-value" id="invertValue">0%</span>
+                    </label>
+                    <input type="range" id="invertSlider" min="0" max="100" value="0" oninput="updateFilter()">
+                </div>
+            </div>
+            
+            <div class="button-container">
+                <button class="file-picker-btn" onclick="resetFilterSettings()" style="margin-top: 10px;">
+                    🔄 Reset Settings
+                </button>
+            </div>
         </div>
+
+        <div class="button-container">
+            <div class="tooltip">
+                <button class="transform-btn micro-interaction" onclick="transformImage()" id="transformBtn" disabled>
+                    <span id="transformBtnText">INITIATE TRANSFORMATION</span>
+                    <span class="loading" id="transformSpinner" style="display: none;"></span>
+                </button>
+                <span class="tooltiptext" id="transformTooltip">Upload an image first to enable transformation</span>
+            </div>
+            <div class="tooltip">
+                <button class="download-btn pulse-cue micro-interaction" onclick="downloadImage()" id="downloadBtn" style="display: none;">
+                    📥 DOWNLOAD PUNK VERSION
+                </button>
+                <span class="tooltiptext">Save your transformed image as PNG</span>
+            </div>
+        </div>
+        
+        <!-- EXECUTION: Next Step Hint -->
+        <div class="next-step-hint" id="nextStepHint"></div>
     </div>
 
     <script>
+        // CREATE Action Funnel Implementation
+        
+        // CUE: Show attention-grabbing notification
+        function showCueNotification(message, duration = 3000) {
+            const notification = document.getElementById('cueNotification');
+            notification.textContent = message;
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, duration);
+        }
+
+        // REACTION: Show preview badge when image is loaded
+        function showPreviewBadge() {
+            const badge = document.getElementById('previewBadge');
+            badge.style.display = 'block';
+            badge.style.animation = 'badge-bounce 2s infinite';
+        }
+
+        // EVALUATION: Update effort indicator
+        function updateEffortIndicator(time) {
+            const indicator = document.querySelector('.effort-indicator');
+            if (indicator) {
+                indicator.textContent = `⏱️ Takes less than ${time} seconds`;
+            }
+        }
+
+        // TIMING: Show contextual prompt at the right moment
+        function showContextualPrompt(text, actionText, actionCallback) {
+            const prompt = document.getElementById('contextualPrompt');
+            const promptText = document.getElementById('promptText');
+            const promptAction = document.getElementById('promptAction');
+            
+            promptText.textContent = text;
+            promptAction.textContent = actionText;
+            promptAction.onclick = actionCallback;
+            
+            prompt.classList.add('show');
+            
+            // Auto-hide after 5 seconds
+            setTimeout(() => {
+                prompt.classList.remove('show');
+            }, 5000);
+        }
+
+        function handlePromptAction() {
+            const prompt = document.getElementById('contextualPrompt');
+            prompt.classList.remove('show');
+        }
+
+        // EXECUTION: Show enhanced feedback
+        function showExecutionFeedback(icon, title, message, nextStep = null) {
+            const feedback = document.getElementById('executionFeedback');
+            const feedbackIcon = document.getElementById('feedbackIcon');
+            const feedbackTitle = document.getElementById('feedbackTitle');
+            const feedbackMessage = document.getElementById('feedbackMessage');
+            const nextStepHint = document.getElementById('nextStepHint');
+            
+            feedbackIcon.textContent = icon;
+            feedbackTitle.textContent = title;
+            feedbackMessage.textContent = message;
+            
+            feedback.classList.add('show');
+            
+            // Show next step hint if provided
+            if (nextStep) {
+                nextStepHint.textContent = `💡 Next: ${nextStep}`;
+                nextStepHint.classList.add('show');
+            }
+            
+            // Hide after 3 seconds
+            setTimeout(() => {
+                feedback.classList.remove('show');
+                if (nextStep) {
+                    setTimeout(() => {
+                        nextStepHint.classList.remove('show');
+                    }, 1000);
+                }
+            }, 3000);
+        }
+
+        // ABILITY: Update tooltip based on state
+        function updateTooltip(elementId, text) {
+            const tooltip = document.querySelector(`#${elementId}`).parentElement.querySelector('.tooltiptext');
+            if (tooltip) {
+                tooltip.textContent = text;
+            }
+        }
+
+        // Filter settings state
+        let filterSettings = {
+            primaryColor: '#00ff41',
+            secondaryColor: '#ff0080',
+            contrast: 130,
+            brightness: 110,
+            saturation: 80,
+            hue: 120,
+            sepia: 0,
+            invert: 0
+        };
+
+        // Toggle filter settings panel
+        function toggleFilterSettings() {
+            const panel = document.getElementById('filterSettings');
+            const toggle = document.getElementById('settingsToggle');
+            panel.classList.toggle('hidden');
+            
+            if (panel.classList.contains('hidden')) {
+                toggle.textContent = '⚙️ FILTER SETTINGS';
+            } else {
+                toggle.textContent = '✖️ HIDE SETTINGS';
+            }
+        }
+
+        // Update filter based on settings
+        function updateFilter() {
+            const img = document.getElementById('profileImg');
+            
+            // Get values from sliders and color pickers
+            filterSettings.primaryColor = document.getElementById('primaryColor').value;
+            filterSettings.secondaryColor = document.getElementById('secondaryColor').value;
+            filterSettings.contrast = parseInt(document.getElementById('contrastSlider').value);
+            filterSettings.brightness = parseInt(document.getElementById('brightnessSlider').value);
+            filterSettings.saturation = parseInt(document.getElementById('saturationSlider').value);
+            filterSettings.hue = parseInt(document.getElementById('hueSlider').value);
+            filterSettings.sepia = parseInt(document.getElementById('sepiaSlider').value);
+            filterSettings.invert = parseInt(document.getElementById('invertSlider').value);
+            
+            // Update value displays
+            document.getElementById('contrastValue').textContent = filterSettings.contrast + '%';
+            document.getElementById('brightnessValue').textContent = filterSettings.brightness + '%';
+            document.getElementById('saturationValue').textContent = filterSettings.saturation + '%';
+            document.getElementById('hueValue').textContent = filterSettings.hue + '°';
+            document.getElementById('sepiaValue').textContent = filterSettings.sepia + '%';
+            document.getElementById('invertValue').textContent = filterSettings.invert + '%';
+            
+            // Build filter string
+            let filterString = 
+                `contrast(${filterSettings.contrast / 100}) ` +
+                `brightness(${filterSettings.brightness / 100}) ` +
+                `saturate(${filterSettings.saturation / 100}) ` +
+                `hue-rotate(${filterSettings.hue}deg)`;
+            
+            if (filterSettings.sepia > 0) {
+                filterString += ` sepia(${filterSettings.sepia / 100})`;
+            }
+            
+            if (filterSettings.invert > 0) {
+                filterString += ` invert(${filterSettings.invert / 100})`;
+            }
+            
+            // Apply filter to image if it exists
+            if (img && img.style.display !== 'none') {
+                img.style.filter = filterString;
+            }
+            
+            // Update UI colors
+            updateUIColors();
+        }
+
+        // Update UI colors based on primary and secondary color
+        function updateUIColors() {
+            const primaryColor = filterSettings.primaryColor;
+            const secondaryColor = filterSettings.secondaryColor;
+            
+            // Convert hex to rgb for rgba
+            const hexToRgb = (hex) => {
+                const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+                return result ? {
+                    r: parseInt(result[1], 16),
+                    g: parseInt(result[2], 16),
+                    b: parseInt(result[3], 16)
+                } : null;
+            };
+            
+            const primaryRgb = hexToRgb(primaryColor);
+            const secondaryRgb = hexToRgb(secondaryColor);
+            
+            if (primaryRgb && secondaryRgb) {
+                // Update CSS variables or inline styles for key elements
+                const style = document.createElement('style');
+                style.id = 'dynamicFilterStyles';
+                style.textContent = `
+                    .profile-image {
+                        border-color: ${primaryColor} !important;
+                        box-shadow: 
+                            0 0 30px ${primaryColor},
+                            inset 0 0 30px rgba(${primaryRgb.r}, ${primaryRgb.g}, ${primaryRgb.b}, 0.2) !important;
+                    }
+                    
+                    .stat-box {
+                        background: rgba(${primaryRgb.r}, ${primaryRgb.g}, ${primaryRgb.b}, 0.1) !important;
+                        border-color: ${primaryColor} !important;
+                    }
+                    
+                    .stat-box:hover {
+                        background: rgba(${secondaryRgb.r}, ${secondaryRgb.g}, ${secondaryRgb.b}, 0.1) !important;
+                        border-color: ${secondaryColor} !important;
+                    }
+                    
+                    .joke-container {
+                        border-color: ${primaryColor} !important;
+                    }
+                    
+                    .skill-item {
+                        border-color: ${primaryColor} !important;
+                    }
+                    
+                    .skill-progress {
+                        background: linear-gradient(90deg, ${primaryColor}, ${secondaryColor}) !important;
+                    }
+                    
+                    .title {
+                        text-shadow: 0 0 20px ${primaryColor} !important;
+                        color: ${primaryColor} !important;
+                    }
+                    
+                    body {
+                        color: ${primaryColor} !important;
+                    }
+                    
+                    .filter-control label {
+                        color: ${primaryColor} !important;
+                    }
+                    
+                    .filter-settings {
+                        border-color: ${primaryColor} !important;
+                    }
+                    
+                    .upload-zone {
+                        border-color: ${primaryColor} !important;
+                    }
+                    
+                    .url-input {
+                        border-color: ${primaryColor} !important;
+                        color: ${primaryColor} !important;
+                    }
+                `;
+                
+                // Remove old dynamic styles if exists
+                const oldStyle = document.getElementById('dynamicFilterStyles');
+                if (oldStyle) {
+                    oldStyle.remove();
+                }
+                
+                document.head.appendChild(style);
+            }
+        }
+
+        // Reset filter settings to default
+        function resetFilterSettings() {
+            filterSettings = {
+                primaryColor: '#00ff41',
+                secondaryColor: '#ff0080',
+                contrast: 130,
+                brightness: 110,
+                saturation: 80,
+                hue: 120,
+                sepia: 0,
+                invert: 0
+            };
+            
+            // Reset sliders and color pickers
+            document.getElementById('primaryColor').value = filterSettings.primaryColor;
+            document.getElementById('secondaryColor').value = filterSettings.secondaryColor;
+            document.getElementById('contrastSlider').value = filterSettings.contrast;
+            document.getElementById('brightnessSlider').value = filterSettings.brightness;
+            document.getElementById('saturationSlider').value = filterSettings.saturation;
+            document.getElementById('hueSlider').value = filterSettings.hue;
+            document.getElementById('sepiaSlider').value = filterSettings.sepia;
+            document.getElementById('invertSlider').value = filterSettings.invert;
+            
+            // Update filter
+            updateFilter();
+            showSuccess('Settings reset to default values');
+        }
+
         // Fogg Behavior Model: Step Management
         function updateSteps(currentStep) {
             const steps = ['step1', 'step2', 'step3'];
@@ -853,20 +1718,12 @@
             transformBtnText.style.display = 'none';
             transformSpinner.style.display = 'inline-block';
             
-            // Cycle through different filter effects
-            const filters = [
-                'contrast(1.8) brightness(1.3) saturate(0.5) hue-rotate(180deg) sepia(0.4)',
-                'contrast(2.0) brightness(1.1) saturate(0.3) hue-rotate(270deg) invert(0.1)',
-                'contrast(1.5) brightness(1.4) saturate(0.7) hue-rotate(90deg) sepia(0.6)',
-                'contrast(1.3) brightness(1.2) saturate(0.8) hue-rotate(240deg) sepia(0.2)'
-            ];
-            
-            const randomFilter = filters[Math.floor(Math.random() * filters.length)];
             const randomJoke = jokes[Math.floor(Math.random() * jokes.length)];
             
             // Simulate processing time for better UX
             setTimeout(() => {
-                img.style.filter = randomFilter;
+                // Apply custom filter settings if set, otherwise use random filter
+                updateFilter();
                 jokeText.innerHTML = randomJoke;
                 
                 // Add glitch effect
@@ -879,6 +1736,21 @@
                 updateSteps(3);
                 updateInstructions('download');
                 showSuccess('Transformation complete! Ready to download.');
+                
+                // CREATE: CUE - Show notification
+                showCueNotification('✨ Transformation complete!');
+                
+                // CREATE: EXECUTION - Show enhanced feedback
+                showExecutionFeedback('✨', 'Transformation Complete!', 'Your punk hacker avatar is ready to download', 'Click the download button below');
+                
+                // CREATE: TIMING - Show contextual prompt for download
+                showContextualPrompt('Transformation done! ', 'Download now', function() {
+                    downloadImage();
+                });
+                
+                // CREATE: REACTION - Enhance download button visibility
+                const downloadBtn = document.getElementById('downloadBtn');
+                downloadBtn.classList.add('action-cue');
                 
                 // Re-enable button
                 transformBtn.disabled = false;
@@ -918,13 +1790,29 @@
                 showSuccess('Image loaded successfully!');
                 showDownloadButton();
                 
+                // CREATE: CUE - Show notification
+                showCueNotification('✓ Image loaded! Ready to transform');
+                
+                // CREATE: REACTION - Show preview badge
+                showPreviewBadge();
+                
+                // CREATE: TIMING - Show contextual prompt
+                showContextualPrompt('Image ready! ', 'Transform now', function() {
+                    transformImage();
+                });
+                
+                // CREATE: ABILITY - Update tooltip
+                updateTooltip('transformBtn', 'Click to apply punk hacker transformation');
+                
                 // Re-enable button
                 loadBtn.disabled = false;
                 loadBtnText.style.display = 'inline';
                 loadSpinner.style.display = 'none';
                 
                 // Enable transform button
-                document.getElementById('transformBtn').disabled = false;
+                const transformBtn = document.getElementById('transformBtn');
+                transformBtn.disabled = false;
+                transformBtn.classList.add('action-cue');
             };
             
             img.onerror = function() {
@@ -973,8 +1861,24 @@
                         showSuccess('Image uploaded successfully!');
                         showDownloadButton();
                         
+                        // CREATE: CUE - Show notification
+                        showCueNotification('✓ Image uploaded! Ready to transform');
+                        
+                        // CREATE: REACTION - Show preview badge
+                        showPreviewBadge();
+                        
+                        // CREATE: TIMING - Show contextual prompt
+                        showContextualPrompt('Great! Your image is ready. ', 'Transform now', function() {
+                            transformImage();
+                        });
+                        
+                        // CREATE: ABILITY - Update tooltip
+                        updateTooltip('transformBtn', 'Click to apply punk hacker transformation');
+                        
                         // Enable transform button
-                        document.getElementById('transformBtn').disabled = false;
+                        const transformBtn = document.getElementById('transformBtn');
+                        transformBtn.disabled = false;
+                        transformBtn.classList.add('action-cue');
                     };
                     reader.readAsDataURL(file);
                 } else {
@@ -1002,8 +1906,24 @@
                         showSuccess('Image uploaded successfully!');
                         showDownloadButton();
                         
+                        // CREATE: CUE - Show notification
+                        showCueNotification('✓ Image uploaded! Ready to transform');
+                        
+                        // CREATE: REACTION - Show preview badge
+                        showPreviewBadge();
+                        
+                        // CREATE: TIMING - Show contextual prompt
+                        showContextualPrompt('Great! Your image is ready. ', 'Transform now', function() {
+                            transformImage();
+                        });
+                        
+                        // CREATE: ABILITY - Update tooltip
+                        updateTooltip('transformBtn', 'Click to apply punk hacker transformation');
+                        
                         // Enable transform button
-                        document.getElementById('transformBtn').disabled = false;
+                        const transformBtn = document.getElementById('transformBtn');
+                        transformBtn.disabled = false;
+                        transformBtn.classList.add('action-cue');
                     };
                     reader.readAsDataURL(file);
                 } else {
@@ -1043,19 +1963,19 @@
                 ctx.drawImage(tempImg, 0, 0, 300, 300);
                 ctx.restore();
                 
-                // Add neon border effect
-                ctx.strokeStyle = '#00ff41';
+                // Add neon border effect with custom color
+                ctx.strokeStyle = filterSettings.primaryColor;
                 ctx.lineWidth = 4;
-                ctx.shadowColor = '#00ff41';
+                ctx.shadowColor = filterSettings.primaryColor;
                 ctx.shadowBlur = 20;
                 ctx.beginPath();
                 ctx.arc(150, 150, 148, 0, Math.PI * 2);
                 ctx.stroke();
                 
-                // Add punk text overlay
+                // Add punk text overlay with custom color
                 ctx.font = 'bold 16px Orbitron';
-                ctx.fillStyle = '#00ff41';
-                ctx.shadowColor = '#00ff41';
+                ctx.fillStyle = filterSettings.primaryColor;
+                ctx.shadowColor = filterSettings.primaryColor;
                 ctx.shadowBlur = 10;
                 ctx.textAlign = 'center';
                 ctx.fillText('PUNK HACKER', 150, 280);
@@ -1074,6 +1994,12 @@
                     // Fogg Behavior Model: Show success feedback
                     showSuccess('Download started! Check your downloads folder.');
                     updateSteps(3);
+                    
+                    // CREATE: EXECUTION - Show enhanced feedback
+                    showExecutionFeedback('📥', 'Download Started!', 'Your punk hacker avatar is downloading. Check your downloads folder!', null);
+                    
+                    // CREATE: CUE - Show notification
+                    showCueNotification('📥 Download started!');
                 }, 'image/png');
             };
             
@@ -1087,6 +2013,12 @@
                 // Fogg Behavior Model: Show success feedback
                 showSuccess('Download started! Check your downloads folder.');
                 updateSteps(3);
+                
+                // CREATE: EXECUTION - Show enhanced feedback
+                showExecutionFeedback('📥', 'Download Started!', 'Your punk hacker avatar is downloading. Check your downloads folder!', null);
+                
+                // CREATE: CUE - Show notification
+                showCueNotification('📥 Download started!');
             };
             
             tempImg.src = img.src;
@@ -1114,6 +2046,36 @@
         // Fogg Behavior Model: Initialize UI state
         updateSteps(1);
         updateInstructions('upload');
+        
+        // CREATE: CUE - Initial welcome notification
+        setTimeout(() => {
+            showCueNotification('👋 Welcome! Upload an image to get started');
+        }, 1000);
+        
+        // CREATE: TIMING - Show initial contextual prompt after 3 seconds
+        setTimeout(() => {
+            if (document.getElementById('profileImg').style.display === 'none') {
+                showContextualPrompt('Ready to transform? ', 'Upload an image', function() {
+                    document.getElementById('uploadZone').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    document.getElementById('uploadZone').classList.add('action-cue');
+                    setTimeout(() => {
+                        document.getElementById('uploadZone').classList.remove('action-cue');
+                    }, 2000);
+                });
+            }
+        }, 3000);
+        
+        // CREATE: EVALUATION - Update effort indicator on page load
+        updateEffortIndicator(30);
+        
+        // CREATE: ABILITY - Initialize tooltips
+        const transformBtn = document.getElementById('transformBtn');
+        if (transformBtn.disabled) {
+            updateTooltip('transformBtn', 'Upload an image first to enable transformation');
+        }
+        
+        // Initialize filter settings on page load
+        updateUIColors();
         
         // Auto-rotate jokes every 10 seconds
         setInterval(() => {
