@@ -1,4 +1,4 @@
-# 🕶️ PUNK HACKER TRANSFORMATION
+# 🕶️ PUNK HACKER TRANSFORMATION 2.0
 
 Turn any photo into a neon-infused, glitchy punk hacker avatar in seconds.  
 Drag & drop your image or use a URL to see yourself transformed with glowing borders, animated overlays, and a hacker-level aesthetic.
@@ -28,24 +28,27 @@ Drag & drop your image or use a URL to see yourself transformed with glowing bor
 
 ## 📦 Installation
 
-Clone the repo and open the HTML file in your browser:
+### Option 1: Use GitHub Pages (Recommended)
+🌐 **Live Demo**: [View on GitHub Pages](https://visualGravitySense.github.io/punk_hacker_transformation/)
 
+### Option 2: Local Installation
 ```bash
 git clone https://github.com/visualGravitySense/punk_hacker_transformation.git
 cd punk_hacker_transformation
-open punk_hacker_transform.html
-````
+open index.html
+```
 
-Or just double-click `punk_hacker_transform.html`.
+Or just double-click `index.html`.
 
 ---
 
 ## 🖱️ Usage
 
 1. Drag and drop an image into the upload zone
-2. Or paste an image URL in the input field and hit **ЗАГРУЗИТЬ** (Load)
+2. Or paste an image URL in the input field and hit **LOAD**
 3. Hit **INITIATE TRANSFORMATION** to apply random punk effects
-4. Save your masterpiece with **📥 DOWNLOAD PUNK VERSION**
+4. Customize with **FILTER SETTINGS** (optional)
+5. Save your masterpiece with **📥 DOWNLOAD PUNK VERSION**
 
 ---
 
@@ -60,6 +63,14 @@ Or just double-click `punk_hacker_transform.html`.
 ## 👨‍💻 Author
 
 Made with ☕ and 🔥 by [visualGravitySense](https://github.com/visualGravitySense)
+
+---
+
+## 🚀 Deployment
+
+This project is automatically deployed to GitHub Pages. See [DEPLOY.md](DEPLOY.md) for detailed deployment instructions.
+
+**Live Site**: [https://visualGravitySense.github.io/punk_hacker_transformation/](https://visualGravitySense.github.io/punk_hacker_transformation/)
 
 ---
 
