@@ -760,6 +760,259 @@
             }
         }
 
+        /* Session Counter - Most Stylish Element at Bottom */
+        .session-counter {
+            margin-top: 60px;
+            padding: 30px;
+            background: 
+                linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(26, 26, 46, 0.95)),
+                radial-gradient(circle at 50% 50%, rgba(0, 255, 65, 0.15), transparent 70%);
+            border: 3px solid #00ff41;
+            border-radius: 25px;
+            box-shadow: 
+                0 0 40px rgba(0, 255, 65, 0.6),
+                0 0 80px rgba(0, 255, 65, 0.3),
+                0 0 120px rgba(0, 255, 65, 0.1),
+                inset 0 0 30px rgba(0, 255, 65, 0.1),
+                inset 0 0 60px rgba(0, 255, 65, 0.05);
+            backdrop-filter: blur(15px);
+            font-family: 'Orbitron', monospace;
+            position: relative;
+            overflow: hidden;
+            animation: counter-glow 4s ease-in-out infinite;
+            transition: all 0.3s ease;
+        }
+
+        .session-counter::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(0, 255, 65, 0.15), transparent);
+            animation: counter-shine 5s infinite;
+            pointer-events: none;
+        }
+
+        .session-counter:hover {
+            transform: scale(1.02);
+            box-shadow: 
+                0 0 50px rgba(0, 255, 65, 0.8),
+                0 0 100px rgba(0, 255, 65, 0.4),
+                0 0 150px rgba(0, 255, 65, 0.2),
+                inset 0 0 40px rgba(0, 255, 65, 0.15);
+        }
+
+        @keyframes counter-glow {
+            0%, 100% {
+                box-shadow: 
+                    0 0 40px rgba(0, 255, 65, 0.6),
+                    0 0 80px rgba(0, 255, 65, 0.3),
+                    inset 0 0 30px rgba(0, 255, 65, 0.1);
+                border-color: #00ff41;
+            }
+            50% {
+                box-shadow: 
+                    0 0 50px rgba(255, 0, 128, 0.6),
+                    0 0 100px rgba(255, 0, 128, 0.3),
+                    inset 0 0 35px rgba(255, 0, 128, 0.15);
+                border-color: #ff0080;
+            }
+        }
+
+        @keyframes counter-shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .counter-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .counter-title {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: #00ff41;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-shadow: 
+                0 0 20px rgba(0, 255, 65, 1),
+                0 0 40px rgba(0, 255, 65, 0.6),
+                0 0 60px rgba(0, 255, 65, 0.3);
+            margin-bottom: 10px;
+            animation: title-pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes title-pulse {
+            0%, 100% { 
+                text-shadow: 
+                    0 0 20px rgba(0, 255, 65, 1),
+                    0 0 40px rgba(0, 255, 65, 0.6);
+            }
+            50% { 
+                text-shadow: 
+                    0 0 30px rgba(255, 0, 128, 1),
+                    0 0 60px rgba(255, 0, 128, 0.6);
+                color: #ff0080;
+            }
+        }
+
+        .counter-subtitle {
+            font-size: 0.9rem;
+            color: #ff0080;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.9;
+        }
+
+        .counter-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .counter-stat {
+            background: rgba(0, 255, 65, 0.05);
+            border: 2px solid rgba(0, 255, 65, 0.3);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .counter-stat::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 65, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .counter-stat:hover {
+            background: rgba(0, 255, 65, 0.1);
+            border-color: #00ff41;
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0, 255, 65, 0.3);
+        }
+
+        .counter-stat:hover::before {
+            left: 100%;
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            filter: drop-shadow(0 0 10px rgba(0, 255, 65, 0.8));
+            animation: icon-float 3s ease-in-out infinite;
+        }
+
+        @keyframes icon-float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 900;
+            color: #00ff41;
+            text-shadow: 
+                0 0 15px rgba(0, 255, 65, 1),
+                0 0 30px rgba(0, 255, 65, 0.5);
+            font-variant-numeric: tabular-nums;
+            margin: 10px 0;
+            letter-spacing: 2px;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: #ff0080;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.9;
+        }
+
+        .counter-timer {
+            text-align: center;
+            margin-top: 25px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            border: 2px solid rgba(0, 255, 65, 0.3);
+        }
+
+        .timer-label-text {
+            font-size: 0.9rem;
+            color: #00ff41;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+            opacity: 0.8;
+        }
+
+        .timer-display-large {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #00ff41;
+            text-shadow: 
+                0 0 20px rgba(0, 255, 65, 1),
+                0 0 40px rgba(0, 255, 65, 0.6);
+            font-variant-numeric: tabular-nums;
+            letter-spacing: 3px;
+        }
+
+        .timer-separator-large {
+            color: #ff0080;
+            animation: separator-blink-large 1s step-end infinite;
+            font-weight: 700;
+        }
+
+        @keyframes separator-blink-large {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0.2; }
+        }
+
+        .timer-unit-large {
+            font-size: 1rem;
+            color: #ff0080;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-left: 8px;
+            opacity: 0.7;
+        }
+
+        @media (max-width: 768px) {
+            .session-counter {
+                padding: 20px;
+                margin-top: 40px;
+            }
+
+            .counter-title {
+                font-size: 1.4rem;
+                letter-spacing: 2px;
+            }
+
+            .counter-stats {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .timer-display-large {
+                font-size: 1.8rem;
+            }
+        }
+
         /* CREATE Action Funnel Enhancements */
         
         /* CUE: Attention-grabbing visual prompts */
@@ -1333,9 +1586,147 @@
         
         <!-- EXECUTION: Next Step Hint -->
         <div class="next-step-hint" id="nextStepHint"></div>
+        
+        <!-- Session Counter - Most Stylish Element at Bottom -->
+        <div class="session-counter" id="sessionCounter">
+            <div class="counter-header">
+                <div class="counter-title">📊 Session Statistics</div>
+                <div class="counter-subtitle">Track Your Journey</div>
+            </div>
+            
+            <div class="counter-timer">
+                <div class="timer-label-text">⏱️ Session Time</div>
+                <div class="timer-display-large">
+                    <span id="counterHours">00</span>
+                    <span class="timer-separator-large">:</span>
+                    <span id="counterMinutes">00</span>
+                    <span class="timer-separator-large">:</span>
+                    <span id="counterSeconds">00</span>
+                </div>
+            </div>
+            
+            <div class="counter-stats">
+                <div class="counter-stat">
+                    <div class="stat-icon">🖱️</div>
+                    <div class="stat-value" id="statClicks">0</div>
+                    <div class="stat-label">Clicks</div>
+                </div>
+                
+                <div class="counter-stat">
+                    <div class="stat-icon">📸</div>
+                    <div class="stat-value" id="statUploads">0</div>
+                    <div class="stat-label">Uploads</div>
+                </div>
+                
+                <div class="counter-stat">
+                    <div class="stat-icon">✨</div>
+                    <div class="stat-value" id="statTransformations">0</div>
+                    <div class="stat-label">Transformations</div>
+                </div>
+                
+                <div class="counter-stat">
+                    <div class="stat-icon">📥</div>
+                    <div class="stat-value" id="statDownloads">0</div>
+                    <div class="stat-label">Downloads</div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
+        // Session Counter - Most Stylish Element at Bottom
+        let sessionStartTime = Date.now();
+        let totalSeconds = 0;
+        let clickCount = 0;
+        let uploadCount = 0;
+        let transformationCount = 0;
+        let downloadCount = 0;
+        let counterInterval;
+
+        function initSessionCounter() {
+            // Track clicks
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.session-counter')) {
+                    clickCount++;
+                    updateCounterStats();
+                }
+            });
+
+            // Start counter timer
+            counterInterval = setInterval(updateCounterTimer, 1000);
+            updateCounterTimer();
+            
+            // Load saved stats
+            loadCounterStats();
+        }
+
+        function updateCounterTimer() {
+            const now = Date.now();
+            const elapsed = Math.floor((now - sessionStartTime) / 1000);
+            totalSeconds = elapsed;
+
+            const hours = Math.floor(elapsed / 3600);
+            const minutes = Math.floor((elapsed % 3600) / 60);
+            const seconds = elapsed % 60;
+
+            // Update display
+            document.getElementById('counterHours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('counterMinutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('counterSeconds').textContent = String(seconds).padStart(2, '0');
+        }
+
+        function updateCounterStats() {
+            document.getElementById('statClicks').textContent = clickCount;
+            document.getElementById('statUploads').textContent = uploadCount;
+            document.getElementById('statTransformations').textContent = transformationCount;
+            document.getElementById('statDownloads').textContent = downloadCount;
+            
+            // Save stats
+            saveCounterStats();
+        }
+
+        // Track uploads
+        const originalFileInputHandler = document.getElementById('fileInput')?.onchange;
+        const originalDropHandler = document.getElementById('uploadZone')?.ondrop;
+        
+        // Save counter state to localStorage
+        function saveCounterStats() {
+            localStorage.setItem('sessionStartTime', sessionStartTime);
+            localStorage.setItem('sessionTotalSeconds', totalSeconds);
+            localStorage.setItem('sessionClicks', clickCount);
+            localStorage.setItem('sessionUploads', uploadCount);
+            localStorage.setItem('sessionTransformations', transformationCount);
+            localStorage.setItem('sessionDownloads', downloadCount);
+        }
+
+        // Load counter state from localStorage
+        function loadCounterStats() {
+            const savedStartTime = localStorage.getItem('sessionStartTime');
+            const savedTotalSeconds = localStorage.getItem('sessionTotalSeconds');
+            const savedClicks = localStorage.getItem('sessionClicks');
+            const savedUploads = localStorage.getItem('sessionUploads');
+            const savedTransformations = localStorage.getItem('sessionTransformations');
+            const savedDownloads = localStorage.getItem('sessionDownloads');
+
+            if (savedStartTime && savedTotalSeconds) {
+                const timeSinceSave = Math.floor((Date.now() - parseInt(savedStartTime)) / 1000);
+                sessionStartTime = parseInt(savedStartTime);
+                totalSeconds = parseInt(savedTotalSeconds) + timeSinceSave;
+                clickCount = parseInt(savedClicks) || 0;
+                uploadCount = parseInt(savedUploads) || 0;
+                transformationCount = parseInt(savedTransformations) || 0;
+                downloadCount = parseInt(savedDownloads) || 0;
+            }
+            
+            updateCounterStats();
+        }
+
+        // Save state periodically
+        setInterval(saveCounterStats, 5000);
+
+        // Save state before page unload
+        window.addEventListener('beforeunload', saveCounterStats);
+
         // CREATE Action Funnel Implementation
         
         // CUE: Show attention-grabbing notification
@@ -1732,6 +2123,10 @@
                     img.style.animation = 'pulse 2s infinite';
                 }, 500);
                 
+                // Update counter
+                transformationCount++;
+                updateCounterStats();
+                
                 // Fogg Behavior Model: Update steps and show success
                 updateSteps(3);
                 updateInstructions('download');
@@ -1784,6 +2179,11 @@
             
             img.onload = function() {
                 console.log('Image loaded successfully');
+                
+                // Update counter
+                uploadCount++;
+                updateCounterStats();
+                
                 // Fogg Behavior Model: Update steps and show success
                 updateSteps(2);
                 updateInstructions('transform');
@@ -1855,6 +2255,10 @@
                         img.style.display = 'block';
                         uploadZone.style.display = 'none';
                         
+                        // Update counter
+                        uploadCount++;
+                        updateCounterStats();
+                        
                         // Fogg Behavior Model: Update steps and show success
                         updateSteps(2);
                         updateInstructions('transform');
@@ -1899,6 +2303,10 @@
                         img.src = event.target.result;
                         img.style.display = 'block';
                         uploadZone.style.display = 'none';
+                        
+                        // Update counter
+                        uploadCount++;
+                        updateCounterStats();
                         
                         // Fogg Behavior Model: Update steps and show success
                         updateSteps(2);
@@ -1991,6 +2399,10 @@
                     document.body.removeChild(a);
                     URL.revokeObjectURL(url);
                     
+                    // Update counter
+                    downloadCount++;
+                    updateCounterStats();
+                    
                     // Fogg Behavior Model: Show success feedback
                     showSuccess('Download started! Check your downloads folder.');
                     updateSteps(3);
@@ -2009,6 +2421,10 @@
                 a.href = img.src;
                 a.download = 'punk-hacker-avatar.jpg';
                 a.click();
+                
+                // Update counter
+                downloadCount++;
+                updateCounterStats();
                 
                 // Fogg Behavior Model: Show success feedback
                 showSuccess('Download started! Check your downloads folder.');
@@ -2076,6 +2492,9 @@
         
         // Initialize filter settings on page load
         updateUIColors();
+        
+        // Initialize session counter
+        initSessionCounter();
         
         // Auto-rotate jokes every 10 seconds
         setInterval(() => {
